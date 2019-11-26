@@ -1,3 +1,4 @@
+import os
 from github_webhook import Webhook
 from flask import Flask
 
@@ -11,6 +12,8 @@ def hello_world():
 @webhook.hook()        # Defines a handler for the 'push' event
 def on_push(data):
     print("Got push with: {0}".format(data))
-
+    os.system("cd ./code/")
+    os.system("git pull")
+    
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
