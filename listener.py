@@ -14,7 +14,7 @@ def on_push(data):
     print("[-] Got push with: {0}".format(data))
     old_path = os.system("pwd")
     print(f"[-] Changing directory from {old_path}")
-    os.system("cd ./code/")
+    os.system("cd /code")
     new_path = os.system("pwd")
     print(f"[-] Changed directory to {new_path}")
     os.system("git pull")
