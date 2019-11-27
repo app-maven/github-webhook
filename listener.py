@@ -11,9 +11,14 @@ def hello_world():
 
 @webhook.hook()        # Defines a handler for the 'push' event
 def on_push(data):
-    print("Got push with: {0}".format(data))
+    print("[-] Got push with: {0}".format(data))
+    old_path = os.system("pwd")
+    print(f"[-] Changing directory from {old_path}")
     os.system("cd ./code/")
+    new_path = os.system("pwd")
+    print(f"[-] Changed directory to {new_path}")
     os.system("git pull")
+    print("[-] Performed `git pull`")
     
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
