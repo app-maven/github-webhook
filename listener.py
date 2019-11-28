@@ -14,12 +14,12 @@ def hello_world():
 @webhook.hook()        # Defines a handler for the 'push' event
 def on_push(data):
     print("[-] Got push with: {0}".format(data))
-    old_path = os.popen('pwd').read()
-    print(f"[-] Changing directory from: {old_path}")
-    change_dir = os.popen('cd /code').read()
-    print(f"[-] Changing directory: {change_dir}")
-    new_path = os.popen('pwd').read()
-    print(f"[-] Changed directory to: {new_path}")
+    # old_path = os.popen('pwd').read()
+    # print(f"[-] Changing directory from: {old_path}")
+    # change_dir = os.popen('cd /code').read()
+    # print(f"[-] Changing directory: {change_dir}")
+    # new_path = os.popen('pwd').read()
+    # print(f"[-] Changed directory to: {new_path}")
     # git_pulled = os.popen("git pull").read()
     # print(f"[-] Performed `git pull`: {git_pulled}")
 
