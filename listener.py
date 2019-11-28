@@ -1,10 +1,12 @@
 import os
+import logging
 from github_webhook import Webhook
 from flask import Flask
 
+
 app = Flask(__name__)  # Standard Flask app
 # Defines '/postreceive' endpoint
-webhook = Webhook(app, secret="AWeU4q9FpR03")
+webhook = Webhook(app)
 
 
 @app.route("/")        # Standard Flask endpoint
@@ -14,14 +16,15 @@ def hello_world():
 
 @webhook.hook("push")        # Defines a handler for the 'push' event
 def on_push(data):
-    print("[-] Got push with: {0}".format(data))
+    logger = logging.getLogger("webhook")
+    logger.info("[-] Got push with: %s" % (data))
     old_path = os.popen('pwd').read()
-    print(f"[-] Changing directory from: {old_path}")
+    logger.info("[-] Changing directory from: %s" % (old_path))
     os.chdir('/code')
     new_path = os.popen('pwd').read()
-    print(f"[-] Changed directory to: {new_path}")
+    logger.info("[-] Changed directory to: %s" % (new_path))
     git_pulled = os.popen("git pull").read()
-    print(f"[-] Performed `git pull`: {git_pulled}")
+    logger.info("[-] Performed `git pull`: %s" % (git_pulled))
 
 
 if __name__ == "__main__":
