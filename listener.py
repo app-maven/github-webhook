@@ -20,8 +20,8 @@ def on_push(data):
     print(f"[-] Changing directory: {change_dir}")
     new_path = os.popen('pwd').read()
     print(f"[-] Changed directory to: {new_path}")
-    git_pulled = os.popen("git pull").read()
-    print(f"[-] Performed `git pull`: {git_pulled}")
+    # git_pulled = os.popen("git pull").read()
+    # print(f"[-] Performed `git pull`: {git_pulled}")
 
 
 if __name__ == "__main__":
